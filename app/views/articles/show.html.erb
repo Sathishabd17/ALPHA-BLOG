@@ -1,8 +1,27 @@
-<h1>Articles Details</h1>
+<h1 class="text-center mt-4"><%= @article.title %></h1>
 
-<p><strong>Title: </strong><%= @article.title %></p>
-<p><strong>Description: </strong><%= @article.description %></p>
-
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you to delete?"} %>
-<%= link_to 'Back', articles_path %>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+            <div class="card text-center shadow mb-5 bg-white rounded">
+                <div class="card-header font-italic">
+                    by anonymous user
+                </div>
+                <div class="card-body">
+                    <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+                    <%= link_to 'Edit', edit_article_path(@article), class:"btn btn-info" %>
+                    <%= link_to 'Danger', article_path(@article), method: :delete, data: {confirm: "Are you to delete?"}, class:"btn btn-danger" %>
+                </div>
+                <div class="card-footer text-muted">
+                    Created <%= time_ago_in_words(@article.created_at) %> ago,
+                    edited <%= time_ago_in_words(@article.updated_at) %> ago.
+                </div>
+            </div>
+            <div class="text-center">
+            <div class="mb-3">
+                <%= link_to '[ Cancel and back to articles ]', articles_path, class: "text-info" %>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

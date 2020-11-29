@@ -1,17 +1,7 @@
 <div class="container">
-    <% if @article.errors.any? %>
-        <h3>Below errors restricted to save.</h3>
-        <ul>
-            <% @article.errors.full_messages.each do |msg| %>
-                <li>
-                    <%= msg %>
-                </li>
-            <% end %>
-        </ul>
-    <% end %>
-    
     <div class="row justify-content-center">
         <div class="col-10">
+            <%= render 'shared/errors' %>
             <%= form_with(model: @article, class:"shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
                 <div class="form-group row">
                     <%= f.label :title, class:"col-sm-2 col-form-label text-light" %>
@@ -32,6 +22,8 @@
                 </div>
             <% end %>
         </div>
-        <%= link_to '[ Cancel and back to articles ]', articles_path, class: "text-info" %>
+        <div class="mb-3">
+            <%= link_to '[ Cancel and back to articles ]', articles_path, class: "text-info" %>
+        </div>
     </div>
 </div>
