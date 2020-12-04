@@ -24,8 +24,9 @@
                     <%= current_user.username %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to 'View your profile', current_user, class:"dropdown-item" %>
+                    <%= link_to 'View profile', current_user, class:"dropdown-item" %>
                     <%= link_to 'Edit profile', edit_user_path(current_user), class:"dropdown-item" %>
+                    <%= link_to 'Detele profile', current_user, class:"dropdown-item text-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
                 </div>
             </li>
             <li class="nav-item">
