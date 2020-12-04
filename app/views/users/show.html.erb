@@ -1,9 +1,15 @@
 <h1 class="text-center mt-4"><%= @user.username %>'s profile</h1>
 <%= gravatar_for @user, size: 200 %>
 
-<% if logged_in? && @user == current_user %>
+<% if logged_in? %>
     <div class="text-center mt-4">
-        <%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-info" %>
+        <% if @user == current_user %>        
+            <%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-outline-info" %>
+        <% end %>
+        <% if current_user.admin? %>
+            <%= link_to 'Delete profile', user_path(@user), class: "btn btn-outline-danger",
+            data: {confirm: "Are you sure do want to this profile and all associated articles?"} %>
+        <% end %>
     </div>
 <% end %>
 
