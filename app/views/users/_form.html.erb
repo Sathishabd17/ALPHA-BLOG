@@ -30,7 +30,11 @@
             <% end %>
         </div>
         <div class="mb-3">
-            <%= link_to '[ Cancel and back to articles ]', articles_path, class: "text-info" %>
+            <% if logged_in? %>
+                <%= link_to '[ Cancel and return to your profile ]', @user, class: "text-info" %>
+            <% else %>
+                <%= link_to '[ Cancel and return to bloggers ]', users_path, class: "text-info" %>
+            <% end %>
         </div>
     </div>
 </div>
